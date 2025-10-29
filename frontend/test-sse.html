@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSE Test</title>
+</head>
+<body>
+    <h1>SSE 测试</h1>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+        
+        // 创建 EventSource 连接
+        const eventSource = new EventSource('http://localhost:8081/api/ai/chat?message=请介绍一下你自己');
+        
+        eventSource.onmessage = function(event) {
+            console.log('Received data:', event.data);
+            // 显示原始数据和字符编码
+            const dataDisplay = document.createElement('div');
+            dataDisplay.innerHTML = `
+                <p>原始数据: ${JSON.stringify(event.data)}</p>
+                <p>数据长度: ${event.data.length}</p>
+                <p>包含换行符: ${event.data.includes('\n')}</p>
+                <p>显示效果:</p>
+                <pre style="border: 1px solid #ccc; padding: 10px;">${event.data}</pre>
+                <hr/>
+            `;
+            output.appendChild(dataDisplay);
+        };
+        
+        eventSource.onerror = function(err) {
+            console.error('EventSource failed:', err);
+            output.innerHTML += '<p style="color: red;">连接错误</p>';
+        };
+    </script>
+</body>
+</html>
