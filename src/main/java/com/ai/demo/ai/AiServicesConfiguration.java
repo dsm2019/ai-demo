@@ -59,6 +59,7 @@ public class AiServicesConfiguration {
 
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
                 .documentSplitter(splitter)
+                .textSegmentTransformer(textSegment -> TextSegment.from(textSegment.text().trim(), textSegment.metadata()))
                 .embeddingModel(qwenEmbeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
