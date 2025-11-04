@@ -21,12 +21,6 @@ public class AiController {
         System.out.println("Received message: " + message);
         return aiAssistant.chatStream(message)
                 .map(chunk -> {
-                    System.out.println("Sending chunk: " + chunk);
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
                     return ServerSentEvent.<String>builder()
                         .data(chunk)
                         .build();

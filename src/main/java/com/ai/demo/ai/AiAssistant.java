@@ -7,9 +7,9 @@ import reactor.core.publisher.Flux;
 
 public interface AiAssistant {
 
-    @SystemMessage(fromResource = "system-message.txt")
+    @SystemMessage(fromResource = "system-message-code.txt")
     String chat(@MemoryId String memoryId, @UserMessage String userMessage);
 
-    @SystemMessage(fromResource = "system-message.txt")
+    @SystemMessage(fromResource = "system-message-code.txt")
     Flux<String> chatStream(String userMessage);
 }

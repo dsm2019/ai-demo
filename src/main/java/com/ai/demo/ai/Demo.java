@@ -15,7 +15,7 @@ public class Demo {
                 .maxTokens(20)
 //                .stops(List.of("Hello"))
                 .build();
-        String message = qwenModel.chat("今天上海天气");
+        String message = qwenModel.chat("写一个java的Hello World程序");
         System.out.println(message);
     }
 

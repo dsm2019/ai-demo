@@ -1,9 +1,6 @@
 spring:
   application:
     name: ai-demo
-  mvc:
-    async:
-      request-timeout: 300000 # 5分钟超时
 
 server:
   port: 8081
@@ -15,12 +12,11 @@ langchain4j:
     dashscope:
       chat-model:
         api-key: sk-3d2abcc406764ac5a535d1e1f82887e3
-        model-name: qwen-vl-max
+        model-name: qwen-max
         temperature: 0.7
         max-tokens: 4096
         enable-search: true
         is-multimodal-model: true
-
 
       streaming-chat-model:
         api-key: sk-3d2abcc406764ac5a535d1e1f82887e3

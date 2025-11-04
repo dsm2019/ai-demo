@@ -90,8 +90,8 @@ const sendMessage = async () => {
             const data = line.slice(5)
             // 更新助手消息内容，保留原始数据中的换行符
             if (assistantMessageIndex < messages.value.length) {
-              // 修复：确保换行符被正确处理
-              messages.value[assistantMessageIndex].content += data + '\n'
+              // 修复：只添加数据本身，不主动添加换行符
+              messages.value[assistantMessageIndex].content += data
               scrollToBottom()
             }
           }
@@ -110,8 +110,8 @@ const sendMessage = async () => {
           const data = line.slice(5)
           // 更新助手消息内容，保留原始数据中的换行符
           if (assistantMessageIndex < messages.value.length) {
-            // 修复：确保换行符被正确处理
-            messages.value[assistantMessageIndex].content += data + '\n'
+            // 修复：只添加数据本身，不主动添加换行符
+            messages.value[assistantMessageIndex].content += data
             scrollToBottom()
           }
         }
@@ -274,13 +274,13 @@ const handleKeydown = (event: KeyboardEvent) => {
   padding: 12px 16px;
   border-radius: 18px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* 保持空白字符并自动换行 */
   word-break: break-word;
   max-width: 80%; /* 限制最大宽度 */
 }
 
 .message-content-text {
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* 保持空白字符并自动换行 */
   word-break: break-word;
   margin: 0;
   padding: 0;
