@@ -64,6 +64,7 @@ public class AiServicesConfiguration {
                 .embeddingStore(embeddingStore)
                 .build();
         ingestor.ingest(documents);
+
         return EmbeddingStoreContentRetriever.builder()
                 .embeddingModel(qwenEmbeddingModel)
                 .embeddingStore(embeddingStore)
