@@ -24,3 +24,7 @@ langchain4j:
         temperature: 0.7
         max-tokens: 4096
         enable-search: true
+
+      embedding-model:
+        model-name: text-embedding-v4
+        api-key: sk-3d2abcc406764ac5a535d1e1f82887e3
